@@ -94,7 +94,7 @@ if (OAuthSimple === undefined)
         if (shared_secret !== undefined) {
             this._secrets['shared_secret'] = shared_secret;
             }
-        this._default_signature_method= "HMAC-SHA1";
+        this._default_signature_method= "PLAINTEXT";
         this._action = "GET";
         this._nonce_chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 

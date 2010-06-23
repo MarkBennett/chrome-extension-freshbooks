@@ -1,5 +1,10 @@
 {
   "name": "Freshbooks Time Tracker",
   "version": "0.1.1",
-  "description": "Bill time against your projects right from the toolbar."
+  "description": "Bill time against your projects right from the toolbar.",
+  "background_page": "background.html",
+  "permissions": [
+    "tabs",
+    "https://*.freshbooks.com/"
+  ]
 }

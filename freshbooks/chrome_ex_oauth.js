@@ -443,7 +443,7 @@ ChromeExOAuth.prototype.getRequestToken = function(callback, opt_args) {
     }
   });
   var onToken = ChromeExOAuth.bind(this.onRequestToken, this, callback);
-  ChromeExOAuth.sendRequest("GET", result.signed_url, null, null, onToken);
+  ChromeExOAuth.sendRequest("POST", result.signed_url, null, null, onToken);
 };
 
 /**
@@ -500,7 +500,7 @@ ChromeExOAuth.prototype.getAccessToken = function(oauth_token, oauth_verifier,
   });
 
   var onToken = ChromeExOAuth.bind(this.onAccessToken, this, callback)
-  ChromeExOAuth.sendRequest("GET", result.signed_url, null, null, onToken);
+  ChromeExOAuth.sendRequest("POST", result.signed_url, null, null, onToken);
 };
 
 /**

@@ -1,0 +1,39 @@
+<html>
+<head>
+<script type="text/javascript" src="chrome_ex_oauthsimple.js"></script>
+<script type="text/javascript" src="chrome_ex_oauth.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+function onAuthorized() {
+  var url = "https://burmisstudio.freshbooks.com/api/2.1/xml-in";
+  var request = {
+    'method':'POST',
+    'body':'<?xml version="1.0" encoding="utf-8"?>\n<request method="time_entry.list"><page>1</page><per_page>15</per_page></request>'
+  };
+  oauth.sendSignedRequest(url, onTimeList, request);
+  alert("Sent signed request");
+}
+
+function onTimeList(text, xhr) {
+  alert("We got some time data!");
+}
+
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+  oauth = ChromeExOAuth.initBackgroundPage({
+    'request_url': 'https://burmisstudio.freshbooks.com/oauth/oauth_request.php',
+    'authorize_url': 'https://burmisstudio.freshbooks.com/oauth/oauth_authorize.php',
+    'access_url': 'https://burmisstudio.freshbooks.com/oauth/oauth_access.php',
+    'consumer_key': 'burmisstudio',
+    'consumer_secret': '38wHcNmnWX6zRUpbFUpVRrwBM6jPX6EUd7',
+    // 'scope': <scope of data access, not used by all OAuth providers>,
+    'app_name': 'FreshBooks for Chrome'
+  });
+  oauth.authorize(onAuthorized);
+});
+</script>
+</head>
+<body>
+</body>
+</html>
